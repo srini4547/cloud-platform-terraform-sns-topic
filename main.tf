@@ -1,9 +1,15 @@
-data "aws_caller_identity" "current" {}
-data "aws_region" "current" {}
-
 resource "aws_sns_topic" "new_topic" {
   name         = "${var.topic_name}"
   display_name = "${var.display_name}" #No more than 10 chars
+
+  tags {
+    business-unit          = "${var.business-unit}"
+    application            = "${var.application}"
+    is-production          = "${var.is-production}"
+    environment-name       = "${var.environment-name}"
+    owner                  = "${var.team_name}"
+    infrastructure-support = "${var.infrastructure-support}"
+  }
 }
 
 resource "aws_iam_user" "new_topic_iam" {
