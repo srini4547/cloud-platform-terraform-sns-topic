@@ -14,11 +14,38 @@ resource "aws_iam_access_key" "new_topic_iam_access_key" {
 data "aws_iam_policy_document" "policy" {
   statement {
     actions = [
-      "sns:*",
+      "sns:ListEndpointsByPlatformApplication",
+      "sns:ListPlatformApplications",
+      "sns:ListSubscriptions",
+      "sns:ListSubscriptionsByTopic",
+      "sns:ListTopics",
+      "sns:CheckIfPhoneNumberIsOptedOut",
+      "sns:GetEndpointAttributes",
+      "sns:GetPlatformApplicationAttributes",
+      "sns:GetSMSAttributes",
+      "sns:GetSubscriptionAttributes",
+      "sns:GetTopicAttributes",
+      "sns:ListPhoneNumbersOptedOut",
+      "sns:ConfirmSubscription",
+      "sns:CreatePlatformApplication",
+      "sns:CreatePlatformEndpoint",
+      "sns:CreateTopic",
+      "sns:DeleteEndpoint",
+      "sns:DeletePlatformApplication",
+      "sns:DeleteTopic",
+      "sns:OptInPhoneNumber",
+      "sns:Publish",
+      "sns:SetEndpointAttributes",
+      "sns:SetPlatformApplicationAttributes",
+      "sns:SetSMSAttributes",
+      "sns:SetSubscriptionAttributes",
+      "sns:SetTopicAttributes",
+      "sns:Subscribe",
+      "sns:Unsubscribe",
     ]
 
     resources = [
-      "*",
+      "${aws_sns_topic.new_topic.arn}",
     ]
   }
 }

@@ -13,10 +13,10 @@ output "iam_arn" {
   value       = "${aws_iam_user.new_topic_iam.arn}"
 }
 
-output "iam_unique_id" {
-  description = "Unique ID of IAM user that has been created"
-  value       = "${aws_iam_user.new_topic_iam.unique_id}"
-}
+# output "iam_unique_id" {
+#   description = "Unique ID of IAM user that has been created"
+#   value       = "${aws_iam_user.new_topic_iam.unique_id}"
+# }
 
 output "iam_access_key_id" {
   description = "The access key ID"
