@@ -14,7 +14,7 @@ module "example_sns_topic" {
 resource "kubernetes_secret" "example_k8_iam_secrets" {
   metadata {
     name      = "${aws_iam_user.new_topic_iam.name}-sns-user-secret"
-    namespace = "${var.cluster_namespace}"
+    namespace = "example_namespace"
   }
 
   data {
