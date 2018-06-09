@@ -1,4 +1,4 @@
-# cloud-platform-terraform-sns module
+# cloud-platform-terraform-sns-topic module
 
 Terraform module that will create an SNS Topic in AWS, along with an IAM User to access it.
 
