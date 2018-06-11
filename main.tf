@@ -1,10 +1,10 @@
 resource "aws_sns_topic" "new_topic" {
   name         = "${var.topic_name}"
-  display_name = "${var.display_name}"
+  display_name = "${var.topic_display_name}"
 }
 
 resource "aws_iam_user" "new_topic_iam" {
-  name = "${var.team_name}-${var.display_name}-topic-user"
+  name = "${var.team_name}-${var.topic_display_name}-topic-user"
 }
 
 resource "aws_iam_access_key" "new_topic_iam_access_key" {

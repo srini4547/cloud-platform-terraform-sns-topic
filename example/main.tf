@@ -3,10 +3,9 @@ provider "aws" {
 }
 
 module "example_sns_topic" {
-  source = "github.com/ministryofjustice/cloud-platform-terraform-sns?ref=master"
+  source = "github.com/ministryofjustice/cloud-platform-terraform-sns-topic?ref=master"
 
   team_name          = "example-repo"
-  namespace          = "example-namespace"
   topic_name         = "example-topic-name"
   topic_display_name = "example-topic-display-name"
 }
