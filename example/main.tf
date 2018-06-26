@@ -12,14 +12,14 @@ module "example_sns_topic" {
 
 resource "kubernetes_secret" "example_k8_iam_secrets" {
   metadata {
-    name      = "${aws_iam_user.new_topic_iam.name}-sns-user-secret"
+    name      = "${module.example_sns_topic.topic_name}-sns-user"
     namespace = "example_namespace"
   }
 
   data {
-    user_name         = "${aws_iam_user.new_topic_iam.name}"
-    access_key_id     = "${aws_iam_access_key.new_topic_iam_access_key.id}"
-    secret_access_key = "${aws_iam_access_key.new_topic_iam_access_key.secret}"
-    topic_arn         = "${aws_sns_topic.new_topic.arn}"
+    user_name         = "${module.example_sns_topic.iam_name}"
+    access_key_id     = "${module.example_sns_topic.iam_access_key_id}"
+    secret_access_key = "${module.example_sns_topic.iam_secret_access_key}"
+    topic_arn         = "${module.example_sns_topic.topic_arn}"
   }
 }
