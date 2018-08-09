@@ -1,14 +1,21 @@
+resource "random_id" "id" {
+  byte_length = 16
+}
+
+// SNS topics do not support tagging, however, the name can be up to 256
+// characters so it should be safe to use the team name here for identification.
 resource "aws_sns_topic" "new_topic" {
-  name         = "${var.topic_name}"
+  name         = "cloud-platform-${var.team_name}-${random_id.id.hex}"
   display_name = "${var.topic_display_name}"
 }
 
-resource "aws_iam_user" "new_topic_iam" {
-  name = "${var.team_name}-${var.topic_display_name}-topic-user"
+resource "aws_iam_user" "user" {
+  name = "sns-topic-user-${random_id.id.hex}"
+  path = "/system/sns-topic-user/${var.team_name}/"
 }
 
-resource "aws_iam_access_key" "new_topic_iam_access_key" {
-  user = "${aws_iam_user.new_topic_iam.name}"
+resource "aws_iam_access_key" "user" {
+  user = "${aws_iam_user.user.name}"
 }
 
 data "aws_iam_policy_document" "policy" {
@@ -48,14 +55,8 @@ data "aws_iam_policy_document" "policy" {
   }
 }
 
-resource "aws_iam_policy" "policy" {
-  name        = "${var.topic_name}-sns-topic-policy"
-  policy      = "${data.aws_iam_policy_document.policy.json}"
-  description = "Policy for SNS}"
-}
-
-resource "aws_iam_policy_attachment" "attach-policy" {
-  name       = "attached-policy"
-  users      = ["${aws_iam_user.new_topic_iam.name}"]
-  policy_arn = "${aws_iam_policy.policy.arn}"
+resource "aws_iam_user_policy" "policy" {
+  name   = "sns-topic"
+  policy = "${data.aws_iam_policy_document.policy.json}"
+  user   = "${aws_iam_user.user.name}"
 }
