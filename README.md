@@ -24,6 +24,7 @@ module "example_sns_topic" {
 
 | Name | Description |
 |------|-------------|
+| topic_name | The generated name for the SNS topic |
 | topic_arn | ARN for the topic |
 | access_key_id | The access key ID |
 | access_key_secret | The secret access key ID |
