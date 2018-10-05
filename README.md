@@ -1,4 +1,4 @@
-# cloud-platform-terraform-sns-topic module
+# cloud-platform-terraform-sns-topic
 
 Terraform module that will create an SNS Topic in AWS, along with an IAM User to access it.
 
@@ -6,7 +6,7 @@ Terraform module that will create an SNS Topic in AWS, along with an IAM User to
 
 ```hcl
 module "example_sns_topic" {
-  source = "github.com/ministryofjustice/cloud-platform-terraform-sns?ref=master"
+  source = "github.com/ministryofjustice/cloud-platform-terraform-sns"
 
   team_name          = "example-repo"
   topic_display_name = "example-topic-display-name"

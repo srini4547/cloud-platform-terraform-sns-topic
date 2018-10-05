@@ -1,15 +1,25 @@
+terraform {
+  backend "s3" {}
+}
+
 provider "aws" {
   region = "eu-west-1"
 }
 
+/*
+ * Make sure that you use the latest version of the module by changing the
+ * `ref=` value in the `source` attribute to the latest version listed on the
+ * releases page of this repository.
+ *
+ */
 module "example_sns_topic" {
-  source = "github.com/ministryofjustice/cloud-platform-terraform-sns-topic?ref=master"
+  source = "github.com/ministryofjustice/cloud-platform-terraform-sns-topic?ref=1.0"
 
   team_name          = "example-team"
   topic_display_name = "example-topic-display-name"
 }
 
-resource "kubernetes_secret" "example_k8_iam_secrets" {
+resource "kubernetes_secret" "example_sns_topic" {
   metadata {
     name      = "my-topic-sns-user"
     namespace = "example_namespace"
