@@ -5,3 +5,8 @@ variable "topic_display_name" {
 variable "team_name" {
   description = "The name of your team"
 }
+
+variable "aws_region" {
+  description = "Region into which the resource will be created"
+  default     = "eu-west-2"
+}
