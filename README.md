@@ -19,6 +19,8 @@ module "example_sns_topic" {
 |------|-------------|:----:|:-----:|:-----:|
 | team_name |  | string | - | yes |
 | topic_display_name | The display name of your SNS Topic. MUST BE UNDER 10 CHARS | string | - | yes |
+| aws_region | Region (ex: eu-west-2) | string | eu-west-2 | no |
+
 
 ## Outputs
 

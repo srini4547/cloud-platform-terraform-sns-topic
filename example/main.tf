@@ -17,6 +17,7 @@ module "example_sns_topic" {
 
   team_name          = "example-team"
   topic_display_name = "example-topic-display-name"
+  aws_region         = "eu-west-2"
 }
 
 resource "kubernetes_secret" "example_sns_topic" {
