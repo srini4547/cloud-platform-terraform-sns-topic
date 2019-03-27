@@ -13,7 +13,7 @@ provider "aws" {
  *
  */
 module "example_sns_topic" {
-  source = "github.com/ministryofjustice/cloud-platform-terraform-sns-topic?ref=1.0"
+  source = "github.com/ministryofjustice/cloud-platform-terraform-sns-topic?ref=2.0"
 
   team_name          = "example-team"
   topic_display_name = "example-topic-display-name"
