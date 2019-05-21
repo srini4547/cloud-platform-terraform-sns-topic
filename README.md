@@ -1,5 +1,7 @@
 # cloud-platform-terraform-sns-topic
 
+[![Releases](https://img.shields.io/github/release/ministryofjustice/cloud-platform-terraform-sns-topic.svg)](https://github.com/ministryofjustice/cloud-platform-terraform-sns-topic/releases)
+
 Terraform module that will create an SNS Topic in AWS, along with an IAM User to access it.
 
 ## Usage
