@@ -16,7 +16,7 @@ resource "aws_sns_topic" "new_topic" {
 }
 
 resource "aws_iam_user" "user" {
-  name = "sns-topic-user-${random_id.id.hex}"
+  name = "cp-sns-topic-${random_id.id.hex}"
   path = "/system/sns-topic-user/${var.team_name}/"
 }
 

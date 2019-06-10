@@ -1,3 +1,8 @@
+output "user_name" {
+  description = "IAM user with access to the topic"
+  value       = "${aws_iam_access_key.user.name}"
+}
+
 output "topic_name" {
   description = "ARN for the topic"
   value       = "${aws_sns_topic.new_topic.name}"
