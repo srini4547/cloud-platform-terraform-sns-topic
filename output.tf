@@ -1,6 +1,6 @@
 output "user_name" {
   description = "IAM user with access to the topic"
-  value       = "${aws_iam_access_key.user.name}"
+  value       = "${aws_iam_user.user.name}"
 }
 
 output "topic_name" {
