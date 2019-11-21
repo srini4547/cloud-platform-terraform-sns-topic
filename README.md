@@ -8,7 +8,7 @@ Terraform module that will create an SNS Topic in AWS, along with an IAM User to
 
 ```hcl
 module "example_sns_topic" {
-  source = "github.com/ministryofjustice/cloud-platform-terraform-sns"
+  source = "github.com/ministryofjustice/cloud-platform-terraform-sns?ref=3.0"
 
   team_name          = "example-repo"
   topic_display_name = "example-topic-display-name"
