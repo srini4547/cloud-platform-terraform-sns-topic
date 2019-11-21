@@ -1,6 +1,6 @@
 provider "aws" {
   alias  = "london"
-  region = "${var.aws_region}"
+  region = var.aws_region
 }
 
 resource "random_id" "id" {
@@ -10,9 +10,9 @@ resource "random_id" "id" {
 // SNS topics do not support tagging, however, the name can be up to 256
 // characters so it should be safe to use the team name here for identification.
 resource "aws_sns_topic" "new_topic" {
-  provider     = "aws.london"
+  provider     = aws.london
   name         = "cloud-platform-${var.team_name}-${random_id.id.hex}"
-  display_name = "${var.topic_display_name}"
+  display_name = var.topic_display_name
 }
 
 resource "aws_iam_user" "user" {
@@ -21,7 +21,7 @@ resource "aws_iam_user" "user" {
 }
 
 resource "aws_iam_access_key" "user" {
-  user = "${aws_iam_user.user.name}"
+  user = aws_iam_user.user.name
 }
 
 data "aws_iam_policy_document" "policy" {
@@ -56,13 +56,13 @@ data "aws_iam_policy_document" "policy" {
     ]
 
     resources = [
-      "${aws_sns_topic.new_topic.arn}",
+      aws_sns_topic.new_topic.arn,
     ]
   }
 }
 
 resource "aws_iam_user_policy" "policy" {
   name   = "sns-topic"
-  policy = "${data.aws_iam_policy_document.policy.json}"
-  user   = "${aws_iam_user.user.name}"
+  policy = data.aws_iam_policy_document.policy.json
+  user   = aws_iam_user.user.name
 }
