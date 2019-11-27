@@ -18,9 +18,10 @@ resource "kubernetes_secret" "example_sns_topic" {
     namespace = "example_namespace"
   }
 
-  data {
-    access_key_id     = "${module.example_sns_topic.access_key_id}"
-    secret_access_key = "${module.example_sns_topic.secret_access_key}"
-    topic_arn         = "${module.example_sns_topic.topic_arn}"
+  data = {
+    access_key_id     = module.example_sns_topic.access_key_id
+    secret_access_key = module.example_sns_topic.secret_access_key
+    topic_arn         = module.example_sns_topic.topic_arn
   }
 }
+
