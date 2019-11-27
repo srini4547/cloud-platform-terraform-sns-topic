@@ -9,7 +9,7 @@ module "example_sns_topic" {
 
   team_name          = "example-team"
   topic_display_name = "example-topic-display-name"
-  
+
   providers = {
     aws = aws.london
   }
