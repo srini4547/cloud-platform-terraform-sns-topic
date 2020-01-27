@@ -1,8 +1,3 @@
-provider "aws" {
-  alias  = "london"
-  region = var.aws_region
-}
-
 resource "random_id" "id" {
   byte_length = 16
 }
@@ -10,7 +5,6 @@ resource "random_id" "id" {
 // SNS topics do not support tagging, however, the name can be up to 256
 // characters so it should be safe to use the team name here for identification.
 resource "aws_sns_topic" "new_topic" {
-  provider     = aws.london
   name         = "cloud-platform-${var.team_name}-${random_id.id.hex}"
   display_name = var.topic_display_name
 }
